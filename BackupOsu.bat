@@ -28,7 +28,7 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"
 :start    
 set main=%~dp0%
-set extr=%~dp0%\7z.exe
+set extr=%~dp0%\7za.exe
 ::Compress OsuLazer Game
 IF EXIST %main%\Osulazer.zip (
     GOTO REMP
@@ -36,14 +36,10 @@ IF EXIST %main%\Osulazer.zip (
     GOTO BACKG
 )
 :BACKG
-    set main=%~dp0%
-    set extr=%~dp0%\7z.exe
     echo Backup Osulazer Game
     start /wait /min %extr% a OsuLazer.zip %APPDATA%\osuLazer> NUL
     GOTO NEXT
 :REMP
-    set main=%~dp0%
-    set extr=%~dp0%\7z.exe
     echo Old game backup file found deleting.......
     echo Delete old Backup
     del %main%\Osulazer.zip
@@ -58,16 +54,12 @@ IF EXIST %main%\Osulazer.zip (
     GOTO BACKD
     )
 :BACKD
-    set main=%~dp0%
-    set extr=%~dp0%\7z.exe
     echo Backup of Osu Data
     start /wait /min %extr% a OsuData.zip %APPDATA%\osu> NUL
     echo Finish
     pause
     GOTO EOF
 :REMPD
-    set main=%~dp0%
-    set extr=%~dp0%\7z.exe
     echo Old data backup file found deleting.......
     echo Delete old Data Backup
     del %main%\OsuData.zip
